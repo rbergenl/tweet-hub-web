@@ -30,5 +30,9 @@ Project created with `npx create-react-app tweet-hub-web`
 - `npm install --save styled-components`
 - create a component using ```styled.ul```
 
+# Getting Data from GraphQL Hub
+- Run `npm install --save axios`
+- Make a POST call with a Query in the body to `https://www.graphqlhub.com/graphql`
+
 # Add Routing
 -

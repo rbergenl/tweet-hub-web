@@ -2,13 +2,13 @@ import { fromJS } from 'immutable';
 
 import {
   SET_USERNAME,
-  LOAD_REPOS_SUCCESS,
-  LOAD_REPOS_ERROR
+  LOAD_USER_SUCCESS,
+  LOAD_USER_ERROR
 } from './constants';
 
 export const initialState = fromJS({
   username: '',
-  repos: false,
+  user: '',
   error: ''
 });
 
@@ -17,9 +17,9 @@ function homeReducer(state = initialState, action) {
     case SET_USERNAME:
       // Delete prefixed '@' from the github username
       return state.set('username', action.name.replace(/@/gi, ''))
-    case LOAD_REPOS_SUCCESS:
-      return state.set('repos', action.repos)
-    case LOAD_REPOS_ERROR:
+    case LOAD_USER_SUCCESS:
+      return state.set('user', action.user).set('error', null)
+    case LOAD_USER_ERROR:
       return state.set('error', action.error)
     default:
       return state;

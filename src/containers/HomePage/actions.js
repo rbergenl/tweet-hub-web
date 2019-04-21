@@ -1,7 +1,7 @@
 import {
   SET_USERNAME,
-  LOAD_REPOS_SUCCESS,
-  LOAD_REPOS_ERROR
+  LOAD_USER_SUCCESS,
+  LOAD_USER_ERROR
 } from './constants';
 
 export function setUsername(name) {
@@ -11,17 +11,16 @@ export function setUsername(name) {
   };
 }
 
-export function reposLoaded(repos, username) {
+export function userLoaded(user) {
   return {
-    type: LOAD_REPOS_SUCCESS,
-    repos,
-    username,
+    type: LOAD_USER_SUCCESS,
+    user
   };
 }
 
-export function repoLoadingError(error) {
+export function userLoadingError(error) {
   return {
-    type: LOAD_REPOS_ERROR,
+    type: LOAD_USER_ERROR,
     error,
   };
 }

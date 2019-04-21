@@ -6,7 +6,10 @@ const selectHome = state => state.get('home', initialState);
 const selectUsername = () =>
   createSelector(selectHome, homeState => homeState.get('username'));
 
-const selectRepos = () =>
-  createSelector(selectHome, homeState => homeState.get('repos'));
+const selectUser = () =>
+  createSelector(selectHome, homeState => homeState.get('user'));
 
-export { selectUsername, selectRepos }
+const selectError = () =>
+  createSelector(selectHome, homeState => homeState.get('error'));
+
+export { selectUsername, selectUser, selectError }

@@ -4,14 +4,15 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import { setUsername } from './actions';
-import { selectUsername, selectRepos } from './selectors';
+import { selectUsername, selectUser, selectError } from './selectors';
 
-import RepoList from './RepoList';
+import User from './User';
+import Error from './Error';
 
 export class HomePage extends React.PureComponent {
 
   render() {
-    const { repos } = this.props;
+    const { user, error } = this.props;
 
     return (
       <React.Fragment>
@@ -23,7 +24,8 @@ export class HomePage extends React.PureComponent {
           </label>
           <input type="submit" value="Submit" />
         </form>
-        <RepoList repos={repos} />
+        {error && <Error error={error} />}
+        {!error && <User user={user} />}
       </React.Fragment>
     );
   }
@@ -32,7 +34,8 @@ export class HomePage extends React.PureComponent {
 HomePage.propTypes = {
   onSubmitForm: PropTypes.func,
   username: PropTypes.string,
-  repos: PropTypes.oneOfType([PropTypes.array, PropTypes.bool])
+  user: PropTypes.any,
+  error: PropTypes.string
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -46,7 +49,8 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = createStructuredSelector({
   username: selectUsername(),
-  repos: selectRepos()
+  user: selectUser(),
+  error: selectError()
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
